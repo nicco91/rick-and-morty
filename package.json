@@ -1,6 +1,12 @@
 {
   "name": "rick-and-morty",
-  "version": "0.1.0",
+  "description": "Rick and morty characters",
+  "author": {
+    "name": "Niccolò Taddei",
+    "email": "n.taddei91@gmail.com",
+    "url": "https://github.com/nicco91"
+  },
+  "version": "1.0.0-SNAPSHOT",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
