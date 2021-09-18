@@ -1,0 +1,73 @@
+import classNames from 'classnames';
+import React, { FC } from 'react';
+import styled from 'styled-components';
+
+type Props = {
+  className?: string;
+  image?: string;
+  title: string;
+  subTitle: React.ReactNode;
+  extra?: React.ReactNode;
+};
+
+const CardWrapper = styled.div`
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  background-color: white;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+`;
+
+const CardImage = styled.div<{ image: string }>`
+  background-image: ${({ image }) => `url('${image}')`};
+  background-position: center center;
+  background-size: cover;
+  flex: 0 0 40%;
+  height: 150px;
+
+  @media (min-width: ${(props) => props.theme.breakpoints.desktop + 'px'}) {
+    height: 200px;
+  }
+`;
+
+const CardBody = styled.div`
+  padding: 16px;
+  flex: 0 0 60%;
+  box-sizing: border-box;
+`;
+
+const CardHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+`;
+
+const CardTitle = styled.h3`
+  margin: 0;
+  color: ${(props) => props.theme.colors.textPrimary};
+`;
+
+const CardSubtitle = styled.p`
+  margin-top: 0;
+  color: ${(props) => props.theme.colors.textSecondary};
+`;
+
+const Card: FC<Props> = ({ className, image, title, subTitle, extra, children }) => {
+  return (
+    <CardWrapper className={classNames('Card', className)}>
+      {image && <CardImage image={image} />}
+      <CardBody>
+        <CardHeader>
+          <CardTitle>{title}</CardTitle>
+          <div>{extra}</div>
+        </CardHeader>
+        <CardSubtitle>{subTitle}</CardSubtitle>
+        <div>{children}</div>
+      </CardBody>
+    </CardWrapper>
+  );
+};
+
+export default Card;
