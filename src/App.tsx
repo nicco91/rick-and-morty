@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import AppHeader from 'components/AppHeader';
 import CharacterGrid from 'components/CharacterGrid';
 import React, { useEffect, VFC } from 'react';
 import { shallowEqual } from 'react-redux';
@@ -17,6 +18,7 @@ const App: VFC<{ className?: string }> = ({ className }) => {
 
   return (
     <div className={classNames('App', className)}>
+      <AppHeader />
       {loading ? 'Loading...' : <CharacterGrid characters={characters} gutter={32} />}
     </div>
   );
