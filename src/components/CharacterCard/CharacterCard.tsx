@@ -1,6 +1,8 @@
 import classNames from 'classnames';
+import CharacterEpisodeTag from 'components/CharacterEpisodeTag';
 import CharacterGenderTag from 'components/CharacterGenderTag';
 import CharacterStatusTag from 'components/CharacterStatusTag';
+import LocationTag from 'components/LocationTag';
 import Card from 'components/UI/Card';
 import { Character } from 'models/character';
 import React, { VFC } from 'react';
@@ -20,6 +22,12 @@ const CharacterInfo = styled.div`
   }
 `;
 
+const CharacterData = styled.div`
+  > *:not(:last-child) {
+    margin-bottom: 16px;
+  }
+`;
+
 const CharacterCard: VFC<Props> = ({ character, className }) => {
   return (
     <Card
@@ -34,7 +42,11 @@ const CharacterCard: VFC<Props> = ({ character, className }) => {
         </CharacterInfo>
       }
     >
-      {character.episode.length} episode{character.episode.length > 1 ? 's' : ''}
+      <CharacterData>
+        <LocationTag label="Origin" locationId={character.originId} />
+        <LocationTag locationId={character.locationId} />
+        <CharacterEpisodeTag episodeIds={character.episodeIds} />
+      </CharacterData>
     </Card>
   );
 };

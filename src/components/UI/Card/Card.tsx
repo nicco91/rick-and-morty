@@ -24,10 +24,10 @@ const CardImage = styled.div<{ image: string }>`
   background-position: center center;
   background-size: cover;
   flex: 0 0 40%;
-  height: 150px;
+  min-height: 150px;
 
   @media (min-width: ${(props) => props.theme.breakpoints.desktop + 'px'}) {
-    height: 200px;
+    min-height: 200px;
   }
 `;
 
@@ -47,11 +47,13 @@ const CardHeader = styled.div`
 const CardTitle = styled.h3`
   margin: 0;
   color: ${(props) => props.theme.colors.textPrimary};
+  font-size: 24px;
 `;
 
 const CardSubtitle = styled.p`
   margin-top: 0;
   color: ${(props) => props.theme.colors.textSecondary};
+  font-size: 18px;
 `;
 
 const Card: FC<Props> = ({ className, image, title, subTitle, extra, children }) => {

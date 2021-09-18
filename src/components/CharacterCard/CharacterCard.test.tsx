@@ -27,7 +27,7 @@ const mockCharacter: Character = {
   url: '',
 };
 
-it('Shows character name', () => {
+test('Shows character name', () => {
   render(<CharacterCard character={mockCharacter} />);
   const linkElement = screen.getByText(mockCharacter.name);
   expect(linkElement).toBeInTheDocument();
