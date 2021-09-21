@@ -29,6 +29,8 @@ export default function useBreakpoint() {
       });
     };
 
+    handleResize();
+
     window.addEventListener('resize', handleResize);
 
     return () => {
