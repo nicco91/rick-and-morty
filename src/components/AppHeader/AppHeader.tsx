@@ -3,10 +3,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const AppHeaderWrapper = styled.div`
-  height: 20vh;
+  min-height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 `;
 
 const AppHeader = () => {

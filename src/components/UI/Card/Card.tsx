@@ -15,25 +15,21 @@ const CardWrapper = styled.div`
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
   background-color: white;
   display: flex;
+  flex-direction: column;
   position: relative;
   overflow: hidden;
+  height: 100%;
 `;
 
 const CardImage = styled.div<{ image: string }>`
   background-image: ${({ image }) => `url('${image}')`};
   background-position: center center;
   background-size: cover;
-  flex: 0 0 40%;
-  min-height: 150px;
-
-  @media (min-width: ${(props) => props.theme.breakpoints.desktop + 'px'}) {
-    min-height: 200px;
-  }
+  min-height: 300px;
 `;
 
 const CardBody = styled.div`
   padding: 16px;
-  flex: 0 0 60%;
   box-sizing: border-box;
 `;
 

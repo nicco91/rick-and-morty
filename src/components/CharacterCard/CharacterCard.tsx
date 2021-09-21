@@ -23,6 +23,9 @@ const CharacterInfo = styled.div`
 `;
 
 const CharacterData = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   > *:not(:last-child) {
     margin-bottom: 16px;
   }

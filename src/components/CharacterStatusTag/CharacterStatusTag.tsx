@@ -5,6 +5,8 @@ import { useTheme } from 'styled-components';
 import { ReactComponent as AliveIcon } from 'icons/alive.svg';
 import { ReactComponent as DeadIcon } from 'icons/dead.svg';
 import { ReactComponent as ZombieIcon } from 'icons/zombie.svg';
+import ReactTooltip from 'react-tooltip';
+import { capitalize } from 'utils/string';
 
 type Props = {
   className?: string;
@@ -26,7 +28,8 @@ const CharacterStatusTag: VFC<Props> = ({ status, className }) => {
 
   return (
     <div className={classNames('CharacterStatusTag', className)}>
-      <Icon style={{ fill }} />
+      <Icon style={{ fill }} data-tip={capitalize(status)} />
+      <ReactTooltip />
     </div>
   );
 };

@@ -6,6 +6,8 @@ import { ReactComponent as MaleIcon } from 'icons/male.svg';
 import { ReactComponent as FemaleIcon } from 'icons/female.svg';
 import { ReactComponent as GenderlessIcon } from 'icons/genderless.svg';
 import { ReactComponent as UnknownIcon } from 'icons/questionCircle.svg';
+import ReactTooltip from 'react-tooltip';
+import { capitalize } from 'utils/string';
 
 type Props = {
   gender: CharacterGender;
@@ -29,7 +31,8 @@ const CharacterGenderTag: VFC<Props> = ({ gender, className }) => {
 
   return (
     <div className={classNames('CharacterGenderTag', className)}>
-      <Icon fill={color} />
+      <Icon fill={color} data-tip={capitalize(gender)} />
+      <ReactTooltip />
     </div>
   );
 };
