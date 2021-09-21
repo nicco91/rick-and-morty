@@ -14,10 +14,29 @@ const ModalContent = styled.div`
   overflow-y: auto;
   box-sizing: border-box;
   padding: 0 32px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobileLandscape + 'px'}) {
+    max-height: calc(100vh - 140px) !important;
+  }
 `;
 
 const ModalTitle = styled.div`
-  margin: 20px 32px;
+  padding: 20px 48px 20px 32px;
+`;
+
+const ModalWrapper = styled(SkyLightStateless)`
+  > .skylight-dialog {
+    @media (max-width: ${({ theme }) => theme.breakpoints.tabletLandscape + 'px'}) {
+      width: 80% !important;
+      left: 35% !important;
+    }
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobileLandscape + 'px'}) {
+      width: 90% !important;
+      max-height: calc(100vh - 40px) !important;
+      top: 20px !important;
+      left: 30% !important;
+    }
+  }
 `;
 
 const Modal: FC<Props> = ({ visible, title, children, onClose }) => {
@@ -33,14 +52,14 @@ const Modal: FC<Props> = ({ visible, title, children, onClose }) => {
   }, [lockBody, unlockBody, visible]);
 
   return (
-    <SkyLightStateless
+    <ModalWrapper
       className="Modal"
       isVisible={visible}
       title={<ModalTitle>{title}</ModalTitle>}
       onCloseClicked={onClose}
       onOverlayClicked={onClose}
       dialogStyles={{
-        padding: '16px 0',
+        padding: '0 0 20px 0',
         borderRadius: theme.borderRadius,
         maxHeight: 'calc(100vh - 100px)',
         boxSizing: 'border-box',
@@ -55,7 +74,7 @@ const Modal: FC<Props> = ({ visible, title, children, onClose }) => {
       }}
     >
       <ModalContent>{children}</ModalContent>
-    </SkyLightStateless>
+    </ModalWrapper>
   );
 };
 
