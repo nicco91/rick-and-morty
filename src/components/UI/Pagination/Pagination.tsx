@@ -10,7 +10,7 @@ import {
 } from 'react-icons/cg';
 import styled from 'styled-components';
 
-const PaginationWrapper = styled.div`
+const ButtonsWrapper = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
@@ -19,6 +19,12 @@ const PaginationWrapper = styled.div`
   > *:not(:last-child) {
     margin-right: 24px;
   }
+`;
+
+const PageIndicator = styled.div`
+  text-align: center;
+  width: 100%;
+  margin-bottom: 16px;
 `;
 
 type Props = {
@@ -57,16 +63,23 @@ const Pagination: VFC<Props> = ({ page, totalPages, onPrev, onNext, onFirst, onL
   ];
 
   return (
-    <PaginationWrapper className="Pagination">
-      <div>
+    <div className="Pagination">
+      <PageIndicator>
         Page {page} of {totalPages}
-      </div>
-      {buttons.map(({ Icon, label, onClick }) => (
-        <AwesomeButton type="secondary" size={mobile ? 'icon' : 'small'} onPress={onClick}>
-          <Icon size={24} /> {!mobile && label}
-        </AwesomeButton>
-      ))}
-    </PaginationWrapper>
+      </PageIndicator>
+      <ButtonsWrapper>
+        {buttons.map(({ Icon, label, onClick }, index) => (
+          <AwesomeButton
+            key={index}
+            type="secondary"
+            size={mobile ? 'icon' : 'small'}
+            onPress={onClick}
+          >
+            <Icon size={24} /> {!mobile && label}
+          </AwesomeButton>
+        ))}
+      </ButtonsWrapper>
+    </div>
   );
 };
 
