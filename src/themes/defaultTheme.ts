@@ -2,15 +2,17 @@ import { DefaultTheme } from 'styled-components';
 
 export const defaultTheme: DefaultTheme = {
   colors: {
-    primary: '#0066cc',
+    primary: '#58a9d4',
+    primaryDark: '#2e84b2',
+    secondary: '#67cbc3',
+    secondaryDark: '#349890',
     success: '#00cc66',
     error: '#cc0000',
     textPrimary: '#333',
     textSecondary: '#999',
   },
   breakpoints: {
-    mobile: 320,
-    mobileLandscape: 480,
+    mobile: 480,
     tablet: 768,
     tabletLandscape: 1024,
     desktop: 1200,

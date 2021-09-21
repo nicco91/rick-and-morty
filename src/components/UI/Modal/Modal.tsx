@@ -15,7 +15,7 @@ const ModalContent = styled.div`
   box-sizing: border-box;
   padding: 0 32px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.mobileLandscape + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
     max-height: calc(100vh - 140px) !important;
   }
 `;

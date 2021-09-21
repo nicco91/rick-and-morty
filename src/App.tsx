@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import AppHeader from 'components/AppHeader';
 import CharacterGrid from 'components/CharacterGrid';
 import React, { useEffect, VFC } from 'react';
@@ -7,24 +6,29 @@ import { useAppDispatch, useAppSelector } from 'store';
 import { fetchCharacters } from 'store/characterSlice';
 import styled from 'styled-components';
 
-const App: VFC<{ className?: string }> = ({ className }) => {
+const AppWrapper = styled.div`
+  padding: 20px;
+  background-color: #f0f2fa;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile + 1 + 'px'}) {
+    padding: 25px 50px;
+  }
+`;
+
+const App: VFC = () => {
   const dispatch = useAppDispatch();
   const { loading, items: characters } = useAppSelector((state) => state.characters, shallowEqual);
-  // const { episodes, locations } = useAppSelector((state) => state.registry, shallowEqual);
 
   useEffect(() => {
     dispatch(fetchCharacters());
   }, [dispatch]);
 
   return (
-    <div className={classNames('App', className)}>
+    <AppWrapper className="App">
       <AppHeader />
       {loading ? 'Loading...' : <CharacterGrid characters={characters} gutter={32} />}
-    </div>
+    </AppWrapper>
   );
 };
 
-export default styled(App)`
-  padding: 25px 50px;
-  background-color: #f0f2fa;
-`;
+export default App;

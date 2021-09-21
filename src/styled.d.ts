@@ -6,6 +6,9 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
       primary: string;
+      primaryDark: string;
+      secondary: string;
+      secondaryDark: string;
       error: string;
       success: string;
       textPrimary: string;
@@ -13,7 +16,6 @@ declare module 'styled-components' {
     };
     breakpoints: {
       mobile: number;
-      mobileLandscape: number;
       tablet: number;
       tabletLandscape: number;
       desktop: number;

@@ -1,7 +1,11 @@
 import CharacterCard from 'components/CharacterCard';
+import Pagination from 'components/UI/Pagination';
 import { Character } from 'models/character';
 import React, { VFC } from 'react';
 import { Col, Row } from 'react-flexbox-grid';
+import { shallowEqual } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'store';
+import { fetchCharacters, firstPage, lastPage, nextPage, prevPage } from 'store/characterSlice';
 import styled, { css } from 'styled-components';
 
 type Props = {
@@ -11,6 +15,30 @@ type Props = {
 };
 
 const CharacterGrid: VFC<Props> = ({ characters, className }) => {
+  const { page, totalPages } = useAppSelector((state) => state.characters, shallowEqual);
+  const dispatch = useAppDispatch();
+
+  const fetch = () => {
+    dispatch(fetchCharacters());
+  };
+
+  const handlePrev = () => {
+    dispatch(prevPage());
+    fetch();
+  };
+  const handleFirst = () => {
+    dispatch(firstPage());
+    fetch();
+  };
+  const handleNext = () => {
+    dispatch(nextPage());
+    fetch();
+  };
+  const handleLast = () => {
+    dispatch(lastPage());
+    fetch();
+  };
+
   return (
     <div className={className}>
       <Row className="CharacterGrid">
@@ -20,6 +48,14 @@ const CharacterGrid: VFC<Props> = ({ characters, className }) => {
           </Col>
         ))}
       </Row>
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        onPrev={handlePrev}
+        onFirst={handleFirst}
+        onNext={handleNext}
+        onLast={handleLast}
+      />
     </div>
   );
 };

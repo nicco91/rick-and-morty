@@ -11,7 +11,7 @@ type Props = {
 };
 
 const LocationHoverText = styled.p`
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.secondaryDark};
   margin: 0;
   &:hover {
     cursor: pointer;
