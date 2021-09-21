@@ -1,5 +1,6 @@
 import AppHeader from 'components/AppHeader';
 import CharacterGrid from 'components/CharacterGrid';
+import Loader from 'components/UI/Loader';
 import React, { useEffect, VFC } from 'react';
 import { shallowEqual } from 'react-redux';
 import { useAppDispatch, useAppSelector } from 'store';
@@ -25,8 +26,14 @@ const App: VFC = () => {
 
   return (
     <AppWrapper className="App">
-      <AppHeader />
-      {loading ? 'Loading...' : <CharacterGrid characters={characters} gutter={32} />}
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <AppHeader />
+          <CharacterGrid characters={characters} gutter={32} />
+        </>
+      )}
     </AppWrapper>
   );
 };
