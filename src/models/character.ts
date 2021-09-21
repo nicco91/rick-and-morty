@@ -5,3 +5,7 @@ export interface Character extends ApiCharacter {
   originId: number;
   locationId: number;
 }
+
+export type CharacterStatus = ApiCharacter['status'];
+
+export type CharacterGender = ApiCharacter['gender'];
