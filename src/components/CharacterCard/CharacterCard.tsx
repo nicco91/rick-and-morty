@@ -48,7 +48,7 @@ const CharacterCard: VFC<Props> = ({ character, className }) => {
       <CharacterData>
         <LocationTag label="Origin" locationId={character.originId} />
         <LocationTag locationId={character.locationId} />
-        <CharacterEpisodeTag episodeIds={character.episodeIds} />
+        <CharacterEpisodeTag character={character} />
       </CharacterData>
     </Card>
   );

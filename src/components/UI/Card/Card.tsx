@@ -11,8 +11,8 @@ type Props = {
 };
 
 const CardWrapper = styled.div`
-  border-radius: 16px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  border-radius: ${(props) => props.theme.borderRadius};
+  box-shadow: ${(props) => props.theme.boxShadow};
   background-color: white;
   display: flex;
   flex-direction: column;

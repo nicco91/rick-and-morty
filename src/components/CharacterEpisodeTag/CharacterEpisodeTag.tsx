@@ -1,10 +1,14 @@
 import classNames from 'classnames';
-import React, { VFC } from 'react';
+import React, { useState, VFC } from 'react';
 import styled from 'styled-components';
+import EpisodeList from 'components/EpisodeList/EpisodeList';
+import Modal from 'components/UI/Modal';
+import { Character } from 'models/character';
+import Avatar from 'components/UI/Avatar';
 
 type Props = {
   className?: string;
-  episodeIds: number[];
+  character: Character;
 };
 
 const EpisodeTag = styled.div`
@@ -17,11 +21,40 @@ const EpisodeTag = styled.div`
   border-radius: 99px;
 `;
 
-const CharacterEpisodeTag: VFC<Props> = ({ className, episodeIds }) => {
+const EpisodeModalTitle = styled.div`
+  display: flex;
+  align-items: center;
+  > h2 {
+    margin: 0;
+    margin-left: 16px;
+  }
+`;
+
+const CharacterEpisodeTag: VFC<Props> = ({ className, character }) => {
+  const [visible, setVisible] = useState(false);
+  const { episodeIds, name: characterName } = character;
+
   return (
-    <EpisodeTag className={classNames('CharacterEpisodeTag', className)}>
-      {episodeIds.length} episode{episodeIds.length > 1 ? 's' : ''}
-    </EpisodeTag>
+    <>
+      <EpisodeTag
+        className={classNames('CharacterEpisodeTag', className)}
+        onClick={() => setVisible(true)}
+      >
+        {episodeIds.length} episode{episodeIds.length > 1 ? 's' : ''}
+      </EpisodeTag>
+      <Modal
+        title={
+          <EpisodeModalTitle>
+            <Avatar image={character.image} />
+            <h2>{characterName || 'Character'} episodes</h2>
+          </EpisodeModalTitle>
+        }
+        visible={visible}
+        onClose={() => setVisible(false)}
+      >
+        <EpisodeList {...{ episodeIds, characterName }} />
+      </Modal>
+    </>
   );
 };
 

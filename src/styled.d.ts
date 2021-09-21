@@ -20,5 +20,7 @@ declare module 'styled-components' {
       desktopLarge: number;
       desktopWide: number;
     };
+    borderRadius: string;
+    boxShadow: string;
   }
 }
