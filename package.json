@@ -6,7 +6,7 @@
     "email": "n.taddei91@gmail.com",
     "url": "https://github.com/nicco91"
   },
-  "version": "1.0.0-SNAPSHOT",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.1",
