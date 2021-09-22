@@ -8,6 +8,16 @@ The project was bootstrapped with [Create React App](https://github.com/facebook
 
 Clone this repository locally, then open the project directory in a terminal.
 
+### Node version
+
+If you use a Node Version Manager, just run the following command inside the project directory:
+
+```sh
+nvm use
+```
+
+Otherwise, check the `.nvmrc` file and install the corresponding Node.js version.
+
 ### Install dependencies
 
 To install dependencies, run the following command:
