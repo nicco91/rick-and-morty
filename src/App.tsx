@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AppHeader from 'components/AppHeader';
+import CharacterGrid from 'components/CharacterGrid';
+import Loader from 'components/UI/Loader';
+import React, { useEffect, VFC } from 'react';
+import { shallowEqual } from 'react-redux';
+import { useAppDispatch, useAppSelector } from 'store';
+import { fetchCharacters } from 'store/characterSlice';
+import styled from 'styled-components';
 
-function App() {
+const AppWrapper = styled.div`
+  padding: 20px;
+  background-color: #f0f2fa;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.mobile + 1 + 'px'}) {
+    padding: 25px 50px;
+  }
+`;
+
+const App: VFC = () => {
+  const dispatch = useAppDispatch();
+  const { loading, items: characters } = useAppSelector((state) => state.characters, shallowEqual);
+
+  useEffect(() => {
+    dispatch(fetchCharacters());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper className="App">
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <AppHeader />
+          <CharacterGrid characters={characters} gutter={32} />
+        </>
+      )}
+    </AppWrapper>
   );
-}
+};
 
 export default App;

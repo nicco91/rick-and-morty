@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render a title 1`] = `
+.c0 {
+  color: #333;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+<h1
+  className="c0"
+>
+  I am a title!
+</h1>
+`;
