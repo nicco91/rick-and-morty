@@ -15,7 +15,7 @@ const ModalContent = styled.div`
   box-sizing: border-box;
   padding: 0 32px;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.tablet + 'px'}) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile + 'px'}) {
     max-height: calc(100vh - 140px) !important;
   }
 `;
@@ -30,7 +30,7 @@ const ModalWrapper = styled(SkyLightStateless)`
       width: 80% !important;
       left: 35% !important;
     }
-    @media (max-width: ${({ theme }) => theme.breakpoints.mobileLandscape + 'px'}) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.mobile + 'px'}) {
       width: 90% !important;
       max-height: calc(100vh - 40px) !important;
       top: 20px !important;
